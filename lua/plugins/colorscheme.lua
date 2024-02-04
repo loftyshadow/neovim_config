@@ -1,6 +1,9 @@
-return {
-    "shaunsingh/nord.nvim",
-    config = function()
-        vim.cmd [[colorscheme nord]]
-    end,
+local M = {
+  "shaunsingh/nord.nvim",
 }
+
+function M.config()
+  vim.cmd [[colorscheme nord]]
+end
+
+return M
