@@ -22,4 +22,5 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<C-L>", ":bnext<CR>")
 keymap.set("n", "<C-H>", ":bprevious<CR>")
 
--- ---------- 插件 ---------- ---
+--  保存
+keymap.set("n", "<C-s>", ":w<cr>")
