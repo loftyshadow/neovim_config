@@ -4,6 +4,7 @@ local M = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     }
+
 }
 
 function M.config()

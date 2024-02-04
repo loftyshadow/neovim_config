@@ -15,7 +15,7 @@ function M.config()
   keymap.set('n', '<leader>fb', builtin.buffers, {})
 
   local actions = require 'telescope.actions'
-  require('telescope').setup {
+  require('telescope').setup({
     extensions = {
       fzf = {
         fuzzy = true,                    -- false will only do exact matching
@@ -53,7 +53,10 @@ function M.config()
         preview_width = 0.5,
       },
     },
-  }
+  })
+  -- 需要编译到~\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim目录下
+  -- 执行cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build
+  require('telescope').load_extension('fzf')
 end
 
 return M

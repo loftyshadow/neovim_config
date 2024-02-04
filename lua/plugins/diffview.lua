@@ -1,5 +1,5 @@
 local M = {
-  "sindrets/diffview.nvim"
+  "sindrets/diffview.nvim",
 }
 
 function M.config()
