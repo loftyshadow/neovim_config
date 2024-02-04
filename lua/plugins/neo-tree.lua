@@ -25,8 +25,6 @@ function M.config()
     end
   end
   require('neo-tree.command').execute({
-    action = "focus",          -- OPTIONAL, this is the default value
-    source = "filesystem",     -- OPTIONAL, this is the default value
     position = "left",         -- OPTIONAL, this is the default value
     reveal_file = reveal_file, -- path to file or folder to reveal
     reveal_force_cwd = true,   -- change cwd without asking if needed
@@ -36,8 +34,21 @@ function M.config()
   require("neo-tree").setup({
     filesystem = {
       find_by_full_path_words = false,  
-    }
-  })
+    },
+	  source_selector = {
+        winbar = true, -- toggle to show selector on winbar
+        sources = {                                               -- table
+          {
+            source = "filesystem",                                -- string
+            display_name = " 󰉓 Files "                            -- string | nil
+          },
+          {
+            source = "git_status",                                -- string
+            display_name = " 󰊢 Git "                              -- string | nil
+          },
+        },
+      },
+     })
 end
 
 return M
