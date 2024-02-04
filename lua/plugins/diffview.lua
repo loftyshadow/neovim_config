@@ -1,10 +1,10 @@
 local M = {
-  "sindrets/diffview.nvim",
+	"sindrets/diffview.nvim",
 }
 
 function M.config()
-  vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory %<cr>')
-  vim.keymap.set('n', '<leader>gb', ':DiffviewFileHistory<cr>')
+	vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory %<cr>")
+	vim.keymap.set("n", "<leader>gb", ":DiffviewFileHistory<cr>")
 end
 
-return  M
+return M
