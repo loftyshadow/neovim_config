@@ -20,16 +20,10 @@ function M.config()
 	local luasnip = require("luasnip")
 	local lspkind = require("lspkind")
 
-	require("luasnip.loaders.from_vscode").load({
-		paths = { "../../snippets" },
-	})
-
 	local check_backspace = function()
 		local col = vim.fn.col(".") - 1
 		return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 	end
-
-	local lspkind = require("lspkind")
 
 	cmp.setup({
 		completion = {
@@ -43,7 +37,7 @@ function M.config()
 		},
 		snippet = {
 			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
+				luasnip.lsp_expand(args.body)
 			end,
 		},
 		mapping = cmp.mapping.preset.insert({
@@ -83,7 +77,6 @@ function M.config()
 			}),
 		}),
 
-		-- 这里重要
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
@@ -91,6 +84,11 @@ function M.config()
 		}, {
 			{ name = "buffer" },
 		}),
+	})
+
+	-- snippets
+	require("luasnip.loaders.from_vscode").load({
+		paths = { "../../snippets" },
 	})
 end
 

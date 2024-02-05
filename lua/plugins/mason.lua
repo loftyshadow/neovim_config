@@ -4,7 +4,6 @@ local M = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
-  "ueovim/nvim-lspconfig"
 }
 
 function M.config()
@@ -16,7 +15,6 @@ function M.config()
 		},
 	})
 	require("mason").setup({
-		PATH = "skip", -- "skip" seems to cause the spawning error
 		ui = {
 			icons = {
 				package_installed = "✓",
@@ -25,17 +23,8 @@ function M.config()
 			},
 		},
 	})
-	require("mason-lspconfig").setup()
-  local lspconfig = require("lspconfig")
-	-- lua
-	lspconfig.lua_ls.setup({
-		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-				},
-			},
-		},
+	require("mason-lspconfig").setup({
+		ensure_installed = { "lua_ls", "marksman" },
 	})
 end
 

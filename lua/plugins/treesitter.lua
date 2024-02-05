@@ -19,7 +19,6 @@ function M.config()
 			"html",
 			"css",
 			"json",
-			"graphql",
 			"regex",
 			"rust",
 			"prisma",
