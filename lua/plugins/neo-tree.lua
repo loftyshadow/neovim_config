@@ -30,7 +30,17 @@ function M.config()
 			reveal_force_cwd = true, -- change cwd without asking if needed
 		})
 	end)
+
 	require("neo-tree").setup({
+		window = {
+			width = 28,
+			mappings = {
+				["l"] = "open",
+				["h"] = "close_node",
+				["[s"] = "prev_source",
+				["]s"] = "next_source",
+			},
+		},
 		filesystem = {
 			find_by_full_path_words = false,
 		},

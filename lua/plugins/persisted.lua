@@ -8,7 +8,9 @@ function M.config()
 	vim.keymap.set("n", "<leader>Ss", ":SessionSave<cr>")
 	vim.keymap.set("n", "<leader>Sd", ":SessionDelete<cr>")
 
-	require("persisted").setup()
+	require("persisted").setup({
+		autosave = false,
+	})
 end
 
 return M

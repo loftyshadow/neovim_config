@@ -24,7 +24,6 @@ function M.config()
 				style = "icon",
 			},
 			separator_style = "slant",
-			numbers = "raise",
 			max_name_length = 12,
 			hover = {
 				enabled = true,
