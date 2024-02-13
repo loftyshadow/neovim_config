@@ -5,7 +5,7 @@ local M = {
 }
 
 function M.config()
-	vim.keymap.set("n", "<leader>bc", ":BufferLineCloseOthers<cr>")
+	vim.keymap.set("n", "<leader>bo", ":BufferLineCloseOthers<cr>")
 	vim.keymap.set("n", "]b", ":BufferLineCycleNext<cr>")
 	vim.keymap.set("n", "[b", ":BufferLineCyclePrev<cr>")
 	vim.keymap.set("n", "<leader>bg", ":BufferLinePick<CR>")
