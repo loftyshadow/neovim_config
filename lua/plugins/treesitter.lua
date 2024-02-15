@@ -5,11 +5,17 @@ local M = {
 	dependencies = {
 		"windwp/nvim-ts-autotag",
 		"axelvc/template-string.nvim",
+		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 }
 
 function M.config()
 	require("nvim-treesitter.configs").setup({
+		textobjects = {
+			select = {
+				enable = true,
+			},
+		},
 		ensure_installed = {
 			"tsx",
 			"lua",

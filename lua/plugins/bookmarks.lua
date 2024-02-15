@@ -1,18 +1,20 @@
 local M = {
-	"MattesGroeger/vim-bookmarks",
+	"LintaoAmons/bookmarks.nvim",
 	dependencies = {
-		"tom-anders/telescope-vim-bookmarks.nvim",
+		{ "stevearc/dressing.nvim" }, -- optional: to have the same UI shown in the GIF
 	},
 }
 
 function M.config()
-	local telescope = require("telescope")
-	telescope.load_extension("vim_bookmarks")
+	require("bookmarks").setup({
+		json_db_path = vim.fs.normalize(vim.fn.stdpath("config") .. "/bookmarks.db.json"),
+	})
 	local keymap = vim.keymap
 
 	vim.g.bookmark_highlight_lines = 1
-	keymap.set("n", "ma", '<cmd>lua require("telescope").extensions.vim_bookmarks.all()<cr>')
-	keymap.set("n", "mc", '<cmd>lua require("telescope").extensions.vim_bookmarks.current_file()<cr>')
+	keymap.set("n", "ma", ":BookmarksGoto<cr>")
+	keymap.set("n", "mg", ":BookmarksGotoRecent<cr>")
+	keymap.set("n", "mc", ":BookmarksMark<cr>")
 end
 
 return M

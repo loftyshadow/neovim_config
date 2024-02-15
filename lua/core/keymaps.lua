@@ -4,7 +4,8 @@ local keymap = vim.keymap
 
 -- ---------- 插入模式 ---------- ---
 keymap.set("i", "jk", "<ESC>")
-keymap.set("i", "<C-s>", "<Esc>:w<cr>")
+keymap.set("i", "<A-a>", "<ESC>A")
+keymap.set("i", "<A-o>", "<ESC>o")
 
 -- ---------- 视觉模式 ---------- ---
 -- 单行或多行移动
@@ -17,12 +18,13 @@ keymap.set("v", "x", "_x")
 -- 窗口
 keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
+keymap.set("n", "<leader>wc", "<C-w>c") -- 关闭当前窗口
 
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 --  保存
-keymap.set("n", "<C-s>", ":w<cr>")
+keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<cr>")
 -- select all
 keymap.set("n", "<C-a>", "ggVG")
 -- <leader>quit
