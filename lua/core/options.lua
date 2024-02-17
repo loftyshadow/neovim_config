@@ -46,14 +46,4 @@ opt.backup = false
 opt.undofile = true
 opt.undodir = vim.fn.expand("$HOME/AppData/Local/nvim-data/undo")
 
--- 命令行补全
-opt.wildmenu = true
-
 vim.b.fileenconding = "utf-8"
-
--- highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})

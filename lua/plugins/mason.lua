@@ -35,7 +35,7 @@ function M.config()
 
 		nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 		nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-		nmap("K", ":Lspsaga hover_doc<cr>", "Hover Documentation")
+		nmap("gh", ":Lspsaga hover_doc<cr>", "Hover Documentation")
 		nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 		nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 		nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")

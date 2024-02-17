@@ -7,7 +7,8 @@ local M = {
 
 function M.config()
 	require("bookmarks").setup({
-		json_db_path = vim.fs.normalize(vim.fn.stdpath("config") .. "/bookmarks.db.json"),
+		-- TODO: need to creat folder first
+		json_db_path = vim.fs.normalize("$HOME/AppData/Local/nvim-data/bookmarks/bookmarks.db.json"),
 	})
 	local keymap = vim.keymap
 
