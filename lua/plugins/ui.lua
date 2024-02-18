@@ -4,7 +4,6 @@ local M = {
 	priority = 1000,
 	dependencies = {
 		{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-		"petertriho/nvim-scrollbar",
 		{
 			"lukas-reineke/headlines.nvim",
 			dependencies = "nvim-treesitter/nvim-treesitter",
@@ -13,6 +12,9 @@ local M = {
 		{
 			"nvim-lualine/lualine.nvim",
 			dependencies = { "nvim-tree/nvim-web-devicons" },
+		},
+		{
+			"kevinhwang91/nvim-hlslens",
 		},
 	},
 }
@@ -49,7 +51,6 @@ function M.config()
 	end)
 
 	require("ibl").setup({ indent = { highlight = highlight } })
-	require("scrollbar").setup()
 	require("headlines").setup({
 		markdown = {
 			headline_highlights = {
@@ -65,6 +66,27 @@ function M.config()
 			quote_highlight = "Quote",
 		},
 	})
+
+	require("hlslens").setup()
+
+	local kopts = { noremap = true, silent = true }
+
+	vim.api.nvim_set_keymap(
+		"n",
+		"n",
+		[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+		kopts
+	)
+	vim.api.nvim_set_keymap(
+		"n",
+		"N",
+		[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+		kopts
+	)
+	vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+	vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+	vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+	vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
 end
 
 return M

@@ -10,6 +10,7 @@ function M.config()
 	vim.keymap.set("n", "H", ":BufferLineCyclePrev<cr>")
 	vim.keymap.set("n", "<leader>bg", ":BufferLinePick<CR>")
 	vim.keymap.set("n", "<leader>bc", ":BufferLinePickClose<CR>")
+	vim.keymap.set("n", "<leader>bp", ":BufferLineTogglePin<CR>")
 	require("bufferline").setup({
 		options = {
 			offsets = {
