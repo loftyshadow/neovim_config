@@ -1,24 +1,30 @@
 local M = {
-	"shaunsingh/nord.nvim",
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
 	dependencies = {
 		{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
 		"petertriho/nvim-scrollbar",
+		{
+			"lukas-reineke/headlines.nvim",
+			dependencies = "nvim-treesitter/nvim-treesitter",
+			config = true, -- or `opts = {}`
+		},
+		{
+			"nvim-lualine/lualine.nvim",
+			dependencies = { "nvim-tree/nvim-web-devicons" },
+		},
 	},
 }
 
 function M.config()
-	vim.cmd([[colorscheme nord]])
+	vim.cmd([[colorscheme catppuccin-frappe]])
+	require("lualine").setup({
+		options = {
+			theme = "catppuccin",
+			-- ... the rest of your lualine config
+		},
+	})
 	local highlight = {
 		"RainbowRed",
 		"RainbowYellow",
@@ -44,6 +50,21 @@ function M.config()
 
 	require("ibl").setup({ indent = { highlight = highlight } })
 	require("scrollbar").setup()
+	require("headlines").setup({
+		markdown = {
+			headline_highlights = {
+				"Headline1",
+				"Headline2",
+				"Headline3",
+				"Headline4",
+				"Headline5",
+				"Headline6",
+			},
+			codeblock_highlight = "CodeBlock",
+			dash_highlight = "Dash",
+			quote_highlight = "Quote",
+		},
+	})
 end
 
 return M

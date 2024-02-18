@@ -42,7 +42,7 @@ function M.config()
 			},
 		},
 		window = {
-			width = 28,
+			width = "25%",
 			mappings = {
 				["l"] = "open",
 				["h"] = "close_node",
@@ -51,6 +51,9 @@ function M.config()
 			},
 		},
 		filesystem = {
+			bind_to_cwd = false,
+			follow_current_file = { enabled = true },
+			use_libuv_file_watcher = true,
 			find_by_full_path_words = false,
 		},
 		source_selector = {
@@ -66,6 +69,14 @@ function M.config()
 				},
 			},
 		},
+	})
+	vim.api.nvim_create_autocmd("TermClose", {
+		pattern = "*lazygit",
+		callback = function()
+			if package.loaded["neo-tree.sources.git_status"] then
+				require("neo-tree.sources.git_status").refresh()
+			end
+		end,
 	})
 end
 

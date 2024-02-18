@@ -22,6 +22,7 @@ function M.config()
 			},
 		},
 		marksman = {},
+		tsserver = {},
 	}
 	local on_attach = function(_, bufnr)
 		-- Enable completion triggered by <c-x><c-o>
@@ -37,6 +38,7 @@ function M.config()
 		nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 		nmap("gh", ":Lspsaga hover_doc<cr>", "Hover Documentation")
 		nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+		nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 		nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 		nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
 		nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
@@ -49,7 +51,6 @@ function M.config()
 		nmap("<leader>ol", ":Lspsaga outline<cr>", "[O]out[L]ine")
 		nmap("<leader>ca", ":Lspsaga code_action<cr>", "[C]ode [A]ction")
 		nmap("<leader>fa", ":Lspsaga finder<cr>", "By default it shows results for references and implementation.")
-		nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 		-- nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 		nmap("<space>f", function()
 			vim.lsp.buf.format({ async = true })
@@ -64,6 +65,7 @@ function M.config()
 			"lua-language-server",
 			"stylua",
 			"prettierd",
+			"typescript-language-server",
 		},
 	})
 	require("mason").setup({
