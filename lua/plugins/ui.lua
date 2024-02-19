@@ -16,6 +16,22 @@ local M = {
 		{
 			"kevinhwang91/nvim-hlslens",
 		},
+		{
+			"folke/noice.nvim",
+			event = "VeryLazy",
+			opts = {
+				-- add any options here
+			},
+			dependencies = {
+				-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+				"MunifTanjim/nui.nvim",
+				-- OPTIONAL:
+				--   `nvim-notify` is only needed, if you want to use the notification view.
+				--   If not available, we use `mini` as the fallback
+				"rcarriga/nvim-notify",
+			},
+		},
+		"HiPhish/rainbow-delimiters.nvim",
 	},
 }
 
@@ -37,6 +53,7 @@ function M.config()
 		"RainbowCyan",
 	}
 
+	-- indent-blankline.nvim
 	local hooks = require("ibl.hooks")
 	-- create the highlight groups in the highlight setup hook, so they are reset
 	-- every time the colorscheme changes
@@ -87,6 +104,49 @@ function M.config()
 	vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
 	vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
 	vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+
+	require("noice").setup({
+		lsp = {
+			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+			override = {
+				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+				["vim.lsp.util.stylize_markdown"] = true,
+				["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+			},
+		},
+		-- you can enable a preset for easier configuration
+		presets = {
+			bottom_search = false, -- use a classic bottom cmdline for search
+			command_palette = true, -- position the cmdline and popupmenu together
+			long_message_to_split = true, -- long messages will be sent to a split
+			lsp_doc_border = false, -- add a border to hover docs and signature help
+		},
+	})
+
+	-- rainbow-delimiters
+	local rainbow_delimiters = require("rainbow-delimiters")
+
+	vim.g.rainbow_delimiters = {
+		strategy = {
+			[""] = rainbow_delimiters.strategy["global"],
+			vim = rainbow_delimiters.strategy["local"],
+		},
+		query = {
+			[""] = "rainbow-delimiters",
+			-- lua = "rainbow-blocks",
+			tsx = "rainbow-parens",
+			javascript = "rainbow-delimiters-react",
+		},
+		highlight = {
+			"RainbowDelimiterRed",
+			"RainbowDelimiterYellow",
+			"RainbowDelimiterBlue",
+			"RainbowDelimiterOrange",
+			"RainbowDelimiterGreen",
+			"RainbowDelimiterViolet",
+			"RainbowDelimiterCyan",
+		},
+	}
 end
 
 return M

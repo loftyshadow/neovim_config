@@ -1,8 +1,8 @@
 local opt = vim.opt
 
 -- 滑动
-scrolloff = 5
-sidescrolloff = 10
+opt.scrolloff = 5
+opt.sidescrolloff = 10
 
 -- 行号
 opt.relativenumber = true
