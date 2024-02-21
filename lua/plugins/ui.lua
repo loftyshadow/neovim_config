@@ -1,6 +1,7 @@
 local M = {
 	"catppuccin/nvim",
 	name = "catppuccin",
+	after = "lualine.nvim",
 	priority = 1000,
 	dependencies = {
 		{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
@@ -32,6 +33,13 @@ local M = {
 			},
 		},
 		"HiPhish/rainbow-delimiters.nvim",
+		"norcalli/nvim-colorizer.lua",
+		{
+			"s1n7ax/nvim-window-picker",
+			name = "window-picker",
+			event = "VeryLazy",
+			version = "2.*",
+		},
 	},
 }
 
@@ -84,7 +92,9 @@ function M.config()
 		},
 	})
 
-	require("hlslens").setup()
+	require("hlslens").setup({
+		calm_down = true,
+	})
 
 	local kopts = { noremap = true, silent = true }
 
@@ -147,6 +157,9 @@ function M.config()
 			"RainbowDelimiterCyan",
 		},
 	}
+
+	-- colorizer
+	require("colorizer").setup()
 end
 
 return M

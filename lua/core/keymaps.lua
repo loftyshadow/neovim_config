@@ -31,3 +31,15 @@ keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<cr>")
 keymap.set("n", "<C-a>", "ggVG")
 -- <leader>quit
 keymap.set("n", "<leader>q", ":q<cr>")
+
+keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
+-- 选择窗口
+keymap.set({ "t", "i" }, "<A-h>", "<C-\\><C-N><C-w>h", { noremap = true })
+keymap.set({ "t", "i" }, "<A-j>", "<C-\\><C-N><C-w>j", { noremap = true })
+keymap.set({ "t", "i" }, "<A-k>", "<C-\\><C-N><C-w>k", { noremap = true })
+keymap.set({ "t", "i" }, "<A-l>", "<C-\\><C-N><C-w>l", { noremap = true })
+keymap.set("n", "<A-h>", "<C-w>h", { noremap = true })
+keymap.set("n", "<A-j>", "<C-w>j", { noremap = true })
+keymap.set("n", "<A-k>", "<C-w>k", { noremap = true })
+keymap.set("n", "<A-l>", "<C-w>l", { noremap = true })
