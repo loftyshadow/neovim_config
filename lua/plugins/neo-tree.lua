@@ -55,6 +55,19 @@ function M.config()
 			follow_current_file = { enabled = true },
 			use_libuv_file_watcher = true,
 			find_by_full_path_words = false,
+			window = {
+				mappings = {
+					["<leader>p"] = "image_wezterm", -- " or another map
+				},
+			},
+			commands = {
+				image_wezterm = function(state)
+					local node = state.tree:get_node()
+					if node.type == "file" then
+						require("image_preview").PreviewImage(node.path)
+					end
+				end,
+			},
 		},
 		source_selector = {
 			winbar = true, -- toggle to show selector on winbar

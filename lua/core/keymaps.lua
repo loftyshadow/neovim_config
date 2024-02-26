@@ -15,20 +15,11 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("v", "x", "_x")
 
 -- ---------- 正常模式 ---------- ---
--- 窗口
-keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口
-keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
-keymap.set("n", "<leader>wc", "<C-w>c") -- 关闭当前窗口
-keymap.set("n", "J", "5j")
-keymap.set("n", "K", "5k")
-
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 --  保存
 keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<cr>")
--- select all
-keymap.set("n", "<C-a>", "ggVG")
 -- <leader>quit
 keymap.set("n", "<leader>q", ":q<cr>")
 

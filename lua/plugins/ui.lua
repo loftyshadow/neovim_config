@@ -45,12 +45,28 @@ local M = {
 
 function M.config()
 	vim.cmd([[colorscheme catppuccin-frappe]])
+
+	-- lualine增加Recording展示
+	local function show_macro_recording()
+		local recording_register = vim.fn.reg_recording()
+		if recording_register == "" then
+			return ""
+		else
+			return "Recording @" .. recording_register
+		end
+	end
 	require("lualine").setup({
-		options = {
-			theme = "catppuccin",
-			-- ... the rest of your lualine config
+		sections = {
+			lualine_b = {
+				{
+					"macro-recording",
+					fmt = show_macro_recording,
+				},
+			},
 		},
 	})
+
+	-- indent-blankline.nvim
 	local highlight = {
 		"RainbowRed",
 		"RainbowYellow",
@@ -60,8 +76,6 @@ function M.config()
 		"RainbowViolet",
 		"RainbowCyan",
 	}
-
-	-- indent-blankline.nvim
 	local hooks = require("ibl.hooks")
 	-- create the highlight groups in the highlight setup hook, so they are reset
 	-- every time the colorscheme changes
@@ -74,7 +88,6 @@ function M.config()
 		vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
 		vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 	end)
-
 	require("ibl").setup({ indent = { highlight = highlight } })
 	require("headlines").setup({
 		markdown = {
@@ -92,12 +105,11 @@ function M.config()
 		},
 	})
 
+	-- hlslens
 	require("hlslens").setup({
 		calm_down = true,
 	})
-
 	local kopts = { noremap = true, silent = true }
-
 	vim.api.nvim_set_keymap(
 		"n",
 		"n",
@@ -115,6 +127,7 @@ function M.config()
 	vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
 	vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
 
+	-- noice
 	require("noice").setup({
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -135,7 +148,6 @@ function M.config()
 
 	-- rainbow-delimiters
 	local rainbow_delimiters = require("rainbow-delimiters")
-
 	vim.g.rainbow_delimiters = {
 		strategy = {
 			[""] = rainbow_delimiters.strategy["global"],
