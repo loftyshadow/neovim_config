@@ -4,8 +4,6 @@ local keymap = vim.keymap
 
 -- ---------- 插入模式 ---------- ---
 keymap.set("i", "jk", "<ESC>")
-keymap.set("i", "<A-a>", "<ESC>A")
-keymap.set("i", "<A-o>", "<ESC>o")
 
 -- ---------- 视觉模式 ---------- ---
 -- 单行或多行移动
@@ -20,8 +18,6 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 --  保存
 keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<cr>")
--- <leader>quit
-keymap.set("n", "<leader>q", ":q<cr>")
 
 keymap.set("t", "<Esc>", "<C-\\><C-n>")
 

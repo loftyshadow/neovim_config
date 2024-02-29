@@ -34,12 +34,6 @@ local M = {
 		},
 		"HiPhish/rainbow-delimiters.nvim",
 		"norcalli/nvim-colorizer.lua",
-		{
-			"s1n7ax/nvim-window-picker",
-			name = "window-picker",
-			event = "VeryLazy",
-			version = "2.*",
-		},
 	},
 }
 
@@ -99,6 +93,7 @@ function M.config()
 				"Headline5",
 				"Headline6",
 			},
+			bullets = {},
 			codeblock_highlight = "CodeBlock",
 			dash_highlight = "Dash",
 			quote_highlight = "Quote",

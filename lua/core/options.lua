@@ -2,7 +2,6 @@ local opt = vim.opt
 
 -- 滑动
 opt.scrolloff = 5
-opt.sidescrolloff = 10
 
 -- 行号
 opt.relativenumber = true
@@ -14,8 +13,8 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
--- 防止包裹
-opt.wrap = false
+-- 自动换行
+opt.wrap = true
 
 -- 光标行
 opt.cursorline = true
