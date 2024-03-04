@@ -6,6 +6,7 @@ local M = {
 		"windwp/nvim-ts-autotag",
 		"axelvc/template-string.nvim",
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		"nvim-treesitter/nvim-treesitter-context",
 	},
 }
 
@@ -61,6 +62,7 @@ function M.config()
 		},
 	})
 	require("template-string").setup({})
+	require("treesitter-context").setup({})
 end
 
 return M

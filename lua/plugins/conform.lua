@@ -17,13 +17,13 @@ function M.config()
 			json = { "prettierd" },
 			yaml = { "prettierd" },
 			markdown = { "prettierd" },
-			graphql = { "prettierd" },
 		},
+		log_level = vim.log.levels.DEBUG,
 
 		format_on_save = {
-			pattern = ".lua,*.graphql,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs",
-			timeout_ms = 500,
-			async = false,
+			pattern = ".lua,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs",
+			timeout_ms = 5000,
+			async = true,
 			lsp_fallback = true,
 		},
 	})
