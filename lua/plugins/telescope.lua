@@ -13,6 +13,7 @@ function M.config()
 	keymap.set("n", "<leader>ff", builtin.find_files, {})
 	keymap.set("n", "<leader>fw", builtin.live_grep, {})
 	keymap.set("n", "<leader>fb", builtin.buffers, {})
+	keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 	local actions = require("telescope.actions")
 	require("telescope").setup({

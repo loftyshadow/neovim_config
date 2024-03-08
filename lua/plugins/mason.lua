@@ -51,8 +51,7 @@ function M.config()
 		nmap("<leader>ol", ":Lspsaga outline<cr>", "[O]out[L]ine")
 		nmap("<leader>ca", ":Lspsaga code_action<cr>", "[C]ode [A]ction")
 		nmap("<leader>fa", ":Lspsaga finder<cr>", "By default it shows results for references and implementation.")
-		-- nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-		nmap("<space>f", function()
+		nmap("<space>ft", function()
 			vim.lsp.buf.format({ async = true })
 		end, "[F]ormat code")
 	end
@@ -64,7 +63,7 @@ function M.config()
 		ensure_installed = {
 			"lua-language-server",
 			"stylua",
-			"prettierd",
+			"prettier",
 			"typescript-language-server",
 		},
 	})
