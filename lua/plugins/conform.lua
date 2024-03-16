@@ -28,7 +28,7 @@ function M.config()
 		log_level = vim.log.levels.DEBUG,
 
 		format_on_save = {
-			pattern = ".lua,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs",
+			pattern = "*.lua,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs,*.ts",
 			timeout_ms = 5000,
 			async = true,
 			lsp_fallback = true,
