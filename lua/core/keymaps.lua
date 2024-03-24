@@ -13,6 +13,8 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("v", "x", "_x")
 
 -- ---------- 正常模式 ---------- ---
+-- 全选
+keymap.set("n", "vae", "ggVG")
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 

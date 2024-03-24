@@ -28,6 +28,8 @@ function M.config()
 				["h"] = "close_node",
 				["[s"] = "prev_source",
 				["]s"] = "next_source",
+				["[c"] = "prev_git_modified",
+				["]c"] = "next_git_modified",
 			},
 		},
 		filesystem = {

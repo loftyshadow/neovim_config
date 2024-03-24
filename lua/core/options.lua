@@ -39,8 +39,8 @@ opt.termguicolors = true
 opt.signcolumn = "yes"
 
 opt.autoread = true
-opt.swapfile = false
-opt.backup = false
+-- opt.swapfile = false
+-- opt.backup = false
 
 opt.undofile = true
 opt.undodir = vim.fn.expand("$HOME/AppData/Local/nvim-data/undo")

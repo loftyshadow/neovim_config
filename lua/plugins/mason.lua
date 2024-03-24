@@ -8,6 +8,12 @@ local M = {
 		"j-hui/fidget.nvim",
 		"nvimdev/lspsaga.nvim",
 		"RRethy/vim-illuminate",
+		{
+			"zeioth/garbage-day.nvim",
+			dependencies = "neovim/nvim-lspconfig",
+			event = "VeryLazy",
+			opts = {},
+		},
 	},
 }
 
@@ -23,6 +29,7 @@ function M.config()
 		},
 		marksman = {},
 		tsserver = {},
+		pyright = {},
 	}
 	local on_attach = function(_, bufnr)
 		-- Enable completion triggered by <c-x><c-o>
@@ -67,6 +74,7 @@ function M.config()
 			"stylua",
 			"prettier",
 			"typescript-language-server",
+			"pyright",
 		},
 	})
 	require("mason").setup({
