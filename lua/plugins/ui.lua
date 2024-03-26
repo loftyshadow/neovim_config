@@ -1,7 +1,6 @@
 local M = {
 	"catppuccin/nvim",
 	name = "catppuccin",
-	after = "lualine.nvim",
 	priority = 1000,
 	dependencies = {
 		{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
@@ -11,8 +10,8 @@ local M = {
 			config = true, -- or `opts = {}`
 		},
 		{
-			"nvim-lualine/lualine.nvim",
-			dependencies = { "nvim-tree/nvim-web-devicons" },
+			"freddiehaddad/feline.nvim",
+			opts = {},
 		},
 		{
 			"kevinhwang91/nvim-hlslens",
@@ -38,26 +37,23 @@ local M = {
 }
 
 function M.config()
-	vim.cmd([[colorscheme catppuccin-frappe]])
+	vim.cmd.colorscheme("catppuccin-frappe")
 
-	-- lualine增加Recording展示
-	local function show_macro_recording()
-		local recording_register = vim.fn.reg_recording()
-		if recording_register == "" then
-			return ""
-		else
-			return "Recording @" .. recording_register
-		end
-	end
-	require("lualine").setup({
-		sections = {
-			lualine_b = {
-				{
-					"macro-recording",
-					fmt = show_macro_recording,
-				},
-			},
-		},
+	local ctp_feline = require("catppuccin.groups.integrations.feline")
+
+	ctp_feline.setup()
+	vim.api.nvim_create_autocmd("ColorScheme", {
+		pattern = "*",
+		callback = function()
+			package.loaded["feline"] = nil
+			package.loaded["catppuccin.groups.integrations.feline"] = nil
+			require("feline").setup({
+				components = require("catppuccin.groups.integrations.feline").get(),
+			})
+		end,
+	})
+	require("feline").setup({
+		components = ctp_feline.get(),
 	})
 
 	-- indent-blankline.nvim
