@@ -30,6 +30,7 @@ function M.config()
 		marksman = {},
 		tsserver = {},
 		pyright = {},
+		volar = {},
 	}
 	local on_attach = function(_, bufnr)
 		-- Enable completion triggered by <c-x><c-o>
@@ -75,6 +76,7 @@ function M.config()
 			"prettier",
 			"typescript-language-server",
 			"pyright",
+			"vue-language-server",
 		},
 	})
 	require("mason").setup({

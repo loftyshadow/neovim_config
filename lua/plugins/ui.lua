@@ -10,8 +10,8 @@ local M = {
 			config = true, -- or `opts = {}`
 		},
 		{
-			"freddiehaddad/feline.nvim",
-			opts = {},
+			"feline-nvim/feline.nvim",
+			after = "catppuccin",
 		},
 		{
 			"kevinhwang91/nvim-hlslens",
@@ -39,21 +39,8 @@ local M = {
 function M.config()
 	vim.cmd.colorscheme("catppuccin-frappe")
 
-	local ctp_feline = require("catppuccin.groups.integrations.feline")
-
-	ctp_feline.setup()
-	vim.api.nvim_create_autocmd("ColorScheme", {
-		pattern = "*",
-		callback = function()
-			package.loaded["feline"] = nil
-			package.loaded["catppuccin.groups.integrations.feline"] = nil
-			require("feline").setup({
-				components = require("catppuccin.groups.integrations.feline").get(),
-			})
-		end,
-	})
 	require("feline").setup({
-		components = ctp_feline.get(),
+		components = require("catppuccin.groups.integrations.feline").get(),
 	})
 
 	-- indent-blankline.nvim
