@@ -33,7 +33,13 @@ function M.config()
 		volar = {},
 	}
 	local on_attach = function(_, bufnr)
-		-- Enable completion triggered by <c-x><c-o>
+		local diagnostic_goto = function(next, severity)
+			local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+			severity = severity and vim.diagnostic.severity[severity] or nil
+			return function()
+				go({ severity = severity })
+			end
+		end
 		local nmap = function(keys, func, desc)
 			if desc then
 				desc = "LSP: " .. desc
@@ -55,12 +61,13 @@ function M.config()
 		end, "[W]orkspace [L]ist Folders")
 		nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 		nmap("<leader>da", require("telescope.builtin").diagnostics, "[D]i[A]gnostics")
-		nmap("]d", vim.diagnostic_goto(true), { desc = "Next Diagnostic" })
-		nmap("[d", vim.diagnostic_goto(false), { desc = "Prev Diagnostic" })
-		nmap("]e", vim.diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-		nmap("[e", vim.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-		nmap("]w", vim.diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
-		nmap("[w", vim.diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+		vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+		vim.keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+		vim.keymap.set("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+		vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+		vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+		vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+		vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 		nmap("<leader>rn", ":Lspsaga rename<cr>", "[R]e[n]ame ctrl + K to exit")
 		nmap("<leader>ol", ":Lspsaga outline<cr>", "[O]out[L]ine")
 		nmap("<leader>ca", ":Lspsaga code_action<cr>", "[C]ode [A]ction")

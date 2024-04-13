@@ -16,9 +16,16 @@ keymap.set("n", "vae", "ggVG")
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
--- 复制粘贴
-keymap.set("v", "<C-Insert>", "y")
-keymap.set({ "n", "i" }, "<S-Insert>", "p")
+-- 退出
+keymap.set("n", "<leader>q", ":qa<cr>")
+-- 判断当前行长度使用gj/gk
+keymap.set({ "n", "x" }, "j", function()
+	return vim.v.count > 0 and "j" or "gj"
+end, { noremap = true, expr = true })
+
+keymap.set({ "n", "x" }, "k", function()
+	return vim.v.count > 0 and "k" or "gk"
+end, { noremap = true, expr = true })
 
 --  保存
 keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<cr>")
