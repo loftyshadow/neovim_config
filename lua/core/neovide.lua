@@ -1,5 +1,5 @@
 vim.o.guifont = "JetBrainsMono Nerd Font:h14" -- text below applies for VimScript
-vim.g.neovide_fullscreen = false
+-- vim.g.neovide_fullscreen = true
 vim.g.neovide_remember_window_size = true
 vim.g.neovide_transparency = 0.8
 vim.g.neovide_refresh_rate = 144

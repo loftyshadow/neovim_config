@@ -9,10 +9,10 @@ local M = {
 			dependencies = "nvim-treesitter/nvim-treesitter",
 			config = true, -- or `opts = {}`
 		},
-		{
-			"feline-nvim/feline.nvim",
-			after = "catppuccin",
-		},
+		-- {
+		-- 	"nvim-lualine/lualine.nvim",
+		-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- },
 		{
 			"kevinhwang91/nvim-hlslens",
 		},
@@ -39,9 +39,11 @@ local M = {
 function M.config()
 	vim.cmd.colorscheme("catppuccin-frappe")
 
-	require("feline").setup({
-		components = require("catppuccin.groups.integrations.feline").get(),
-	})
+	-- require("lualine").setup({
+	-- 	options = {
+	-- 		theme = "auto",
+	-- 	},
+	-- })
 
 	-- indent-blankline.nvim
 	local highlight = {
