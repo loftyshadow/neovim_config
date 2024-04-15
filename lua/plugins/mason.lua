@@ -18,6 +18,18 @@ local M = {
 }
 
 function M.config()
+	require("mason").setup({
+		ui = {
+			icons = {
+				package_installed = "✓",
+				package_pending = "➜",
+				package_uninstalled = "✗",
+			},
+		},
+	})
+	local vue_typescript_plugin = require("mason-registry").get_package("vue-language-server"):get_install_path()
+		.. "/node_modules/@vue/language-server"
+		.. "/node_modules/@vue/typescript-plugin"
 	local servers = {
 		lua_ls = {
 			settings = {
@@ -28,7 +40,26 @@ function M.config()
 			},
 		},
 		marksman = {},
-		tsserver = {},
+		tsserver = {
+			init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_typescript_plugin,
+						languages = { "javascript", "typescript", "vue" },
+					},
+				},
+			},
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+				"vue",
+			},
+		},
 		pyright = {},
 		volar = {},
 	}
@@ -90,15 +121,7 @@ function M.config()
 			"vue-language-server",
 		},
 	})
-	require("mason").setup({
-		ui = {
-			icons = {
-				package_installed = "✓",
-				package_pending = "➜",
-				package_uninstalled = "✗",
-			},
-		},
-	})
+
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	require("mason-lspconfig").setup({
 		ensure_installed = vim.tbl_keys(servers),

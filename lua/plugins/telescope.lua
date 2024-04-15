@@ -14,6 +14,8 @@ function M.config()
 	keymap.set("n", "<leader>fw", builtin.live_grep, {})
 	keymap.set("n", "<leader>fb", builtin.buffers, {})
 	keymap.set("n", "<leader>fh", builtin.help_tags, {})
+	keymap.set("n", "<leader>rc", builtin.oldfiles, {})
+	keymap.set("n", "<leader>fm", builtin.marks, {})
 
 	local actions = require("telescope.actions")
 	require("telescope").setup({

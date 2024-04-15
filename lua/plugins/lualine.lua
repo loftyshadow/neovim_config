@@ -51,6 +51,7 @@ function M.config()
 				winbar = {},
 			},
 			ignore_focus = {},
+			diagnostics = "nvim_lsp",
 			always_divide_middle = true,
 			globalstatus = true,
 			theme = bubbles_theme,
@@ -81,17 +82,12 @@ function M.config()
 						modified = " ",
 						removed = " ",
 					},
-					source = function()
-						local gitsigns = vim.b.gitsigns_status_dict
-						if gitsigns then
-							return {
-								added = gitsigns.added,
-								modified = gitsigns.changed,
-								removed = gitsigns.removed,
-							}
-						end
-					end,
+					separator = { left = " " },
 				},
+				"%=", --[[ 分割后面是中间 ]]
+			},
+			-- 最右前
+			lualine_x = {
 				{
 					"diagnostics",
 					symbols = {
@@ -101,10 +97,6 @@ function M.config()
 						hint = "",
 					},
 				},
-				"%=", --[[ 分割后面是中间 ]]
-			},
-			-- 最右前
-			lualine_x = {
 				-- 时间
 				{
 					function()
