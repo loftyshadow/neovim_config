@@ -1,19 +1,14 @@
 {
-	"name": "example-snippets",
-	"contributes": {
-		"snippets": [
-			{
-				"language": [
-					"all"
-				],
-				"path": "./lua/all.json"
-			},
-			{
-				"language": [
-					"lua"
-				],
-				"path": "./lua/lua.json"
-			}
-		]
-	}
+  "name": "custome_snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "vue",
+        "path": "./vue.json"
+      }
+    ]
+  }
 }

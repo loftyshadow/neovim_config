@@ -8,6 +8,8 @@ local M = {
 		"hrsh7th/cmp-cmdline",
 		{
 			"L3MON4D3/LuaSnip",
+			-- follow latest release.
+			version = "v2.*",
 			dependencies = { "rafamadriz/friendly-snippets" },
 		},
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
@@ -81,9 +83,7 @@ function M.config()
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
 			{ name = "path" },
-		}, {
-			{ name = "buffer" },
-		}),
+		}, { { name = "buffer" } }),
 	})
 
 	-- Set configuration for specific filetype.
@@ -112,10 +112,11 @@ function M.config()
 			{ name = "cmdline" },
 		}),
 	})
-
-	-- snippets
-	require("luasnip.loaders.from_vscode").load({
-		paths = { "../../snippets" },
+	-- for friendly snippets
+	require("luasnip.loaders.from_vscode").lazy_load()
+	-- for custom snippets
+	require("luasnip.loaders.from_vscode").lazy_load({
+		paths = { vim.fn.stdpath("config") .. "/snippets" },
 	})
 end
 
