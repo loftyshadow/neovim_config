@@ -27,9 +27,6 @@ function M.config()
 			},
 		},
 	})
-	local vue_typescript_plugin = require("mason-registry").get_package("vue-language-server"):get_install_path()
-		.. "/node_modules/@vue/language-server"
-		.. "/node_modules/@vue/typescript-plugin"
 	local servers = {
 		lua_ls = {
 			settings = {
@@ -45,7 +42,9 @@ function M.config()
 				plugins = {
 					{
 						name = "@vue/typescript-plugin",
-						location = vue_typescript_plugin,
+						location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+							.. "/node_modules/@vue/language-server"
+							.. "/node_modules/@vue/typescript-plugin",
 						languages = { "javascript", "typescript", "vue" },
 					},
 				},
@@ -123,6 +122,9 @@ function M.config()
 	})
 
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	require("mason-lspconfig").setup_handlers({
+		["rust_analyzer"] = function() end,
+	})
 	require("mason-lspconfig").setup({
 		ensure_installed = vim.tbl_keys(servers),
 	})

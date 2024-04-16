@@ -10,6 +10,25 @@ local M = {
 
 function M.config()
 	vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+	--Open neo-tree at current file or working directory
+	vim.keymap.set("n", "<leader>E", function()
+		local reveal_file = vim.fn.expand("%:p")
+		if reveal_file == "" then
+			reveal_file = vim.fn.getcwd()
+		else
+			local f = io.open(reveal_file, "r")
+			if f then
+				f.close(f)
+			else
+				reveal_file = vim.fn.getcwd()
+			end
+		end
+		require("neo-tree.command").execute({
+			position = "left", -- OPTIONAL, this is the default value
+			reveal_file = reveal_file, -- path to file or folder to reveal
+			reveal_force_cwd = true, -- change cwd without asking if needed
+		})
+	end)
 	require("neo-tree").setup({
 		event_handlers = {
 			{
@@ -32,7 +51,7 @@ function M.config()
 		},
 		filesystem = {
 			bind_to_cwd = false,
-			follow_current_file = { enabled = true },
+			follow_current_file = { enabled = false },
 			use_libuv_file_watcher = true,
 			find_by_full_path_words = false,
 			window = {

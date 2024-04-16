@@ -9,10 +9,6 @@ local M = {
 			dependencies = "nvim-treesitter/nvim-treesitter",
 			config = true, -- or `opts = {}`
 		},
-		-- {
-		-- 	"nvim-lualine/lualine.nvim",
-		-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-		-- },
 		{
 			"kevinhwang91/nvim-hlslens",
 		},
@@ -38,12 +34,7 @@ local M = {
 
 function M.config()
 	vim.cmd.colorscheme("catppuccin-frappe")
-
-	-- require("lualine").setup({
-	-- 	options = {
-	-- 		theme = "auto",
-	-- 	},
-	-- })
+	vim.cmd([[highlight Visual guibg=#767E87 guifg=none]])
 
 	-- indent-blankline.nvim
 	local highlight = {
