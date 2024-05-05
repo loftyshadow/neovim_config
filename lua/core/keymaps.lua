@@ -16,6 +16,9 @@ keymap.set("n", "vae", "ggVG")
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
+-- Shift + Insert 粘贴
+keymap.set({ "n", "i", "c" }, "<S-Insert>", "<C-R>+")
+
 -- 退出
 keymap.set("n", "<leader>q", ":qa<cr>")
 -- 判断当前行长度使用gj/gk
@@ -41,7 +44,7 @@ keymap.set("n", "<A-k>", "<C-w>k", { noremap = true })
 keymap.set("n", "<A-l>", "<C-w>l", { noremap = true })
 
 -- 更改窗口大小
-keymap.set({ "t", "i", "n" }, "<C-Right>", "<C-w>>", { noremap = true })
-keymap.set({ "t", "i", "n" }, "<C-Left>", "<C-w><", { noremap = true })
-keymap.set({ "t", "i", "n" }, "<C-Up>", "<C-w>+", { noremap = true })
-keymap.set({ "t", "i", "n" }, "<C-Down>", "<C-w>-", { noremap = true })
+keymap.set({ "t", "i", "n" }, "<A-Right>", "<C-w>>", { noremap = true })
+keymap.set({ "t", "i", "n" }, "<A-Left>", "<C-w><", { noremap = true })
+keymap.set({ "t", "i", "n" }, "<A-Up>", "<C-w>+", { noremap = true })
+keymap.set({ "t", "i", "n" }, "<A-Down>", "<C-w>-", { noremap = true })

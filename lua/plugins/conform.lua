@@ -8,11 +8,11 @@ function M.config()
 	require("conform").setup({
 		formatters_by_ft = {
 			["lua"] = { "stylua" },
-			["javascript"] = { "prettier" },
-			["javascriptreact"] = { "prettier" },
-			["typescript"] = { "prettier" },
+			["javascript"] = { "eslint" },
+			["javascriptreact"] = { "eslint" },
+			["typescript"] = { "eslint" },
 			["typescriptreact"] = { "prettier" },
-			["vue"] = { "prettier" },
+			["vue"] = { "eslint" },
 			["css"] = { "prettier" },
 			["scss"] = { "prettier" },
 			["less"] = { "prettier" },
@@ -27,12 +27,12 @@ function M.config()
 		},
 		log_level = vim.log.levels.DEBUG,
 
-		format_on_save = {
-			pattern = "*.lua,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs,*.ts",
-			timeout_ms = 5000,
-			async = true,
-			lsp_fallback = true,
-		},
+		-- format_on_save = {
+		--     pattern = "*.lua,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs,*.ts,*.vue",
+		--     timeout_ms = 5000,
+		--     async = true,
+		--     lsp_fallback = true,
+		-- },
 	})
 end
 

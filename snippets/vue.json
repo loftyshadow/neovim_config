@@ -1,6 +1,6 @@
 {
   "setup": {
-    "prefix": ["setup", "template"],
+    "prefix": ["vs"],
     "body": [
       "<template>",
       "\t$1",
@@ -10,11 +10,18 @@
       "\t$2",
       "</script>",
       "",
-      "<style lang=\"sass\">",
+      "<style lang=\"scss\">",
       "\t$3",
       "</style>",
       ""
     ],
     "description": "Standard setup Vue3 + TS"
+  },
+  "cls": {
+    "prefix": ["cls"],
+    "body": [
+      "console.log('$1')",
+    ],
+    "description": "console.log('')"
   }
 }

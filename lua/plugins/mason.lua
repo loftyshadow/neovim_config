@@ -8,12 +8,6 @@ local M = {
 		"j-hui/fidget.nvim",
 		"nvimdev/lspsaga.nvim",
 		"RRethy/vim-illuminate",
-		{
-			"zeioth/garbage-day.nvim",
-			dependencies = "neovim/nvim-lspconfig",
-			event = "VeryLazy",
-			opts = {},
-		},
 	},
 }
 
@@ -38,6 +32,7 @@ function M.config()
 		},
 		marksman = {},
 		tsserver = {
+			format = { enable = false },
 			init_options = {
 				plugins = {
 					{
@@ -61,6 +56,14 @@ function M.config()
 		},
 		pyright = {},
 		volar = {},
+		eslint = {
+			on_attach = function(client, bufnr)
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					buffer = bufnr,
+					command = "EslintFixAll",
+				})
+			end,
+		},
 	}
 	local on_attach = function(_, bufnr)
 		local diagnostic_goto = function(next, severity)
@@ -118,6 +121,7 @@ function M.config()
 			"typescript-language-server",
 			"pyright",
 			"vue-language-server",
+			"eslint_d",
 		},
 	})
 
