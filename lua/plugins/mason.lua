@@ -31,31 +31,32 @@ function M.config()
 			},
 		},
 		marksman = {},
-		tsserver = {
-			format = { enable = false },
-			init_options = {
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-							.. "/node_modules/@vue/language-server"
-							.. "/node_modules/@vue/typescript-plugin",
-						languages = { "javascript", "typescript", "vue" },
-					},
-				},
-			},
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"vue",
-			},
-		},
 		pyright = {},
-		volar = {},
+		-- tsserver = {
+		-- 	format = { enable = false },
+		-- 	init_options = {
+		-- 		plugins = {
+		-- 			{
+		-- 				name = "@vue/typescript-plugin",
+		-- 				location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+		-- 					.. "/node_modules/@vue/language-server"
+		-- 					.. "/node_modules/@vue/typescript-plugin",
+		-- 				languages = { "javascript", "typescript", "vue" },
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	filetypes = {
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"javascript.jsx",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"typescript.tsx",
+		-- 		"vue",
+		-- 	},
+  --           disable = true
+		-- },
+		-- volar = {},
 		eslint = {
 			on_attach = function(client, bufnr)
 				vim.api.nvim_create_autocmd("BufWritePre", {
@@ -118,9 +119,9 @@ function M.config()
 			"lua-language-server",
 			"stylua",
 			"prettier",
-			"typescript-language-server",
 			"pyright",
-			"vue-language-server",
+			-- "typescript-language-server",
+			-- "vue-language-server",
 			"eslint_d",
 		},
 	})
