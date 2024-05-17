@@ -63,6 +63,8 @@ function M.config()
             },
         },
     })
+	-- 需要编译到~\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim目录下
+	-- 执行cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("persisted")
     require("telescope").load_extension("live_grep_args")

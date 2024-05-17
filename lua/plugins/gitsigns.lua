@@ -1,5 +1,5 @@
 local M = {
-	"gitsigns.nvim",
+	"lewis6991/gitsigns.nvim",
 }
 
 function M.config()
