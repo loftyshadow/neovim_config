@@ -20,7 +20,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set({ "n", "i", "c" }, "<S-Insert>", "<C-R>+")
 
 -- 退出
-keymap.set("n", "<leader>q", ":qa<cr>")
+keymap.set("n", "<leader>q", ":quitall<cr>")
 -- 判断当前行长度使用gj/gk
 keymap.set({ "n", "x" }, "j", function()
 	return vim.v.count > 0 and "j" or "gj"
